@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+echo "🚀 Running pre-commit hook..."
+
+echo "📦 Building full Maven project..."
+
+mvn clean install -DskipTests
+
+if [ $? -ne 0 ]; then
+  echo "❌ Build failed. Commit blocked."
+  exit 1
+fi
+
+echo "✅ Build successful. Commit allowed."
+exit 0
